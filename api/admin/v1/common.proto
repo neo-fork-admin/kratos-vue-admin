@@ -6,7 +6,6 @@ package api.admin.v1;
 
 option go_package = "fengyin/api/admin/v1;v1";
 
-
 message CommonReply {
   int32 code = 1;
   string message = 2;

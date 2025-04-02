@@ -13,103 +13,104 @@ option go_package = "fengyin/api/admin/v1;v1";
 // 用户管理
 service Sysuser {
   // 创建用户
-  rpc CreateSysuser (CreateSysuserRequest) returns (CreateSysuserReply){
+  rpc CreateSysuser(CreateSysuserRequest) returns (CreateSysuserReply) {
     option (google.api.http) = {
-      post: "/system/user"
-      body: "*"
+      post : "/system/user"
+      body : "*"
     };
   };
   // 更新用户
-  rpc UpdateSysuser (UpdateSysuserRequest) returns (UpdateSysuserReply){
+  rpc UpdateSysuser(UpdateSysuserRequest) returns (UpdateSysuserReply) {
     option (google.api.http) = {
-      put: "/system/user"
-      body: "*"
+      put : "/system/user"
+      body : "*"
     };
   };
   // 删除用户
-  rpc DeleteSysuser (DeleteSysuserRequest) returns (DeleteSysuserReply){
+  rpc DeleteSysuser(DeleteSysuserRequest) returns (DeleteSysuserReply) {
     option (google.api.http) = {
-      delete: "/system/user/{id}"
+      delete : "/system/user/{id}"
     };
   };
   // 获取用户
-  rpc GetSysuser (GetSysuserRequest) returns (GetSysuserReply){
+  rpc GetSysuser(GetSysuserRequest) returns (GetSysuserReply) {
     option (google.api.http) = {
-      get: "/system/user/getById/{id}"
+      get : "/system/user/getById/{id}"
     };
   };
   // 用户列表
-  rpc ListSysuser (ListSysuserRequest) returns (ListSysuserReply){
+  rpc ListSysuser(ListSysuserRequest) returns (ListSysuserReply) {
     option (google.api.http) = {
-      get: "/system/user/list"
+      get : "/system/user/list"
     };
   };
   // 获取验证码
-  rpc GetCaptcha (GetCaptchaRequest) returns (GetCaptchaReply){
+  rpc GetCaptcha(GetCaptchaRequest) returns (GetCaptchaReply) {
     option (google.api.http) = {
-      get: "/system/user/getCaptcha"
+      get : "/system/user/getCaptcha"
     };
   };
   // 登入
-  rpc Login (LoginRequest) returns (LoginReply){
+  rpc Login(LoginRequest) returns (LoginReply) {
     option (google.api.http) = {
-      post: "/system/user/login"
-      body: "*"
+      post : "/system/user/login"
+      body : "*"
     };
   };
   // 登出
-  rpc Logout (LogoutRequest) returns (LogoutReply){
+  rpc Logout(LogoutRequest) returns (LogoutReply) {
     option (google.api.http) = {
-      post: "/system/user/logout"
-      body: "*"
+      post : "/system/user/logout"
+      body : "*"
     };
   };
   // 获取用户权限
-  rpc Auth (AuthRequest) returns (AuthReply){
+  rpc Auth(AuthRequest) returns (AuthReply) {
     option (google.api.http) = {
-      get: "/system/user/auth"
+      get : "/system/user/auth"
     };
   };
   // 更新用户状态
-  rpc ChangeStatus(ChangeStatusRequest) returns (ChangeStatusReply){
+  rpc ChangeStatus(ChangeStatusRequest) returns (ChangeStatusReply) {
     option (google.api.http) = {
-      put: "/system/user/changeStatus"
-      body:"*"
+      put : "/system/user/changeStatus"
+      body : "*"
     };
   };
 
   // 更新密码
-  rpc UpdatePassword (UpdatePasswordRequest) returns (UpdatePasswordReply){
+  rpc UpdatePassword(UpdatePasswordRequest) returns (UpdatePasswordReply) {
     option (google.api.http) = {
-      put: "/system/user/pwd"
-      body:"*"
+      put : "/system/user/pwd"
+      body : "*"
     };
   };
   // 获取岗位
-  rpc GetPostInit (GetPostInitRequest) returns (GetPostInitReply){
+  rpc GetPostInit(GetPostInitRequest) returns (GetPostInitReply) {
     option (google.api.http) = {
-      get: "/system/user/getInit"
+      get : "/system/user/getInit"
     };
   };
   // 获取RoPo
-  rpc GetUserRolePost (GetUserRolePostRequest) returns (GetUserRolePostReply){
+  rpc GetUserRolePost(GetUserRolePostRequest) returns (GetUserRolePostReply) {
     option (google.api.http) = {
-      get: "/system/user/getRoPo"
+      get : "/system/user/getRoPo"
     };
   };
   // 生成密钥和二维码
-  rpc GetUserGoogleSecret (GetUserGoogleSecretRequest) returns (GetUserGoogleSecretReply){
+  rpc GetUserGoogleSecret(GetUserGoogleSecretRequest)
+      returns (GetUserGoogleSecretReply) {
     option (google.api.http) = {
-      get: "/system/user/secret"
+      get : "/system/user/secret"
     };
   };
 }
 
 message CreateSysuserRequest {
-  string nickName = 1 [(validate.rules).string = {min_len: 1, max_len: 30}];
-  string username = 2 [(validate.rules).string = {min_len: 1, max_len: 30}];
-  string password = 3 [(validate.rules).string = {min_len: 1, max_len: 30}];
-  string phone = 4 ;
+  string nickName = 1 [ (validate.rules).string = {min_len : 1, max_len : 30} ];
+  string username = 2 [ (validate.rules).string = {min_len : 1, max_len : 30} ];
+  string password = 3 [ (validate.rules).string = {min_len : 1, max_len : 30} ];
+  string phone = 4;
   string email = 5;
   int32 sex = 6;
   int64 deptId = 7;
@@ -120,7 +121,7 @@ message CreateSysuserRequest {
   string postIds = 12;
   string roleIds = 13;
   string avatar = 14;
-  string secret = 15 [(validate.rules).string.len = 32];
+  string secret = 15 [ (validate.rules).string.len = 32 ];
 }
 
 message CreateSysuserReply {}
@@ -151,20 +152,16 @@ message UpdateSysuserRequest {
 }
 message UpdateSysuserReply {}
 
-message DeleteSysuserRequest {
-  int64 id = 1;
-}
+message DeleteSysuserRequest { int64 id = 1; }
 message DeleteSysuserReply {}
 
-message GetSysuserRequest {
-  int64 id = 1;
-}
+message GetSysuserRequest { int64 id = 1; }
 message GetSysuserReply {
   UserData user = 1;
   repeated RoleData roles = 2;
   repeated PostData posts = 3;
   repeated DeptTree depts = 4;
-  string  postIds = 5;
+  string postIds = 5;
   string roleIds = 6;
 }
 
@@ -182,30 +179,28 @@ message ListSysuserReply {
   repeated UserData data = 4;
 }
 
-message GetCaptchaRequest{}
-message GetCaptchaReply{
+message GetCaptchaRequest {}
+message GetCaptchaReply {
   string base64Captcha = 1;
   string captchaId = 2;
   string content = 3;
 }
 
-message LoginRequest{
+message LoginRequest {
   string username = 1;
   string password = 2;
   string code = 3;
 }
-message LoginReply{
+message LoginReply {
   string token = 1;
   int64 expire = 2;
 }
 
-message LogoutRequest{}
-message LogoutReply{}
+message LogoutRequest {}
+message LogoutReply {}
 
-message AuthRequest{
-  string username = 1;
-}
-message AuthReply{
+message AuthRequest { string username = 1; }
+message AuthReply {
 
   message User {
     int64 userId = 1;
@@ -254,32 +249,31 @@ message AuthReply{
   repeated MenuTreeAuth menus = 4;
 }
 
-message ChangeStatusRequest{
+message ChangeStatusRequest {
   int64 userId = 1;
   int32 status = 2;
 }
-message ChangeStatusReply{}
+message ChangeStatusReply {}
 
-message UpdatePasswordRequest{
+message UpdatePasswordRequest {
   string newPassword = 1;
   string oldPassword = 2;
 };
-message UpdatePasswordReply{};
+message UpdatePasswordReply {};
 
-message GetPostInitRequest{};
-message GetPostInitReply{
+message GetPostInitRequest {};
+message GetPostInitReply {
   repeated RoleData roles = 1;
   repeated PostData posts = 2;
 };
 
-message GetUserRolePostRequest{};
-message GetUserRolePostReply{
+message GetUserRolePostRequest {};
+message GetUserRolePostReply {
   repeated RoleData roles = 1;
   repeated PostData posts = 2;
 };
 
-message GetUserGoogleSecretRequest {
-}
+message GetUserGoogleSecretRequest {}
 
 message GetUserGoogleSecretReply {
   string secret = 1;

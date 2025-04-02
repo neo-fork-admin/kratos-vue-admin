@@ -8,53 +8,54 @@ package api.admin.v1;
 option go_package = "fengyin/api/admin/v1;v1";
 
 // 角色管理
-service Roles{
+service Roles {
   // 创建角色
-  rpc CreateRoles (CreateRolesRequest) returns (CreateRolesReply){
+  rpc CreateRoles(CreateRolesRequest) returns (CreateRolesReply) {
     option (google.api.http) = {
-      post: "/system/role"
-      body: "*"
+      post : "/system/role"
+      body : "*"
     };
   };
   // 更新角色
-  rpc UpdateRoles (UpdateRolesRequest) returns (UpdateRolesReply){
+  rpc UpdateRoles(UpdateRolesRequest) returns (UpdateRolesReply) {
     option (google.api.http) = {
-      put: "/system/role"
-      body: "*"
+      put : "/system/role"
+      body : "*"
     };
   };
 
   // 角色列表
-  rpc ListRoles (ListRolesRequest) returns (ListRolesReply){
+  rpc ListRoles(ListRolesRequest) returns (ListRolesReply) {
     option (google.api.http) = {
-      get: "/system/role/list"
+      get : "/system/role/list"
     };
   };
   // 更改角色状态
-  rpc ChangeRoleStatus (ChangeRoleStatusRequest) returns (ChangeRoleStatusReply) {
-      option (google.api.http) = {
-          put: "/system/role/changeStatus"
-          body: "*"
-      };
+  rpc ChangeRoleStatus(ChangeRoleStatusRequest)
+      returns (ChangeRoleStatusReply) {
+    option (google.api.http) = {
+      put : "/system/role/changeStatus"
+      body : "*"
+    };
   };
   // 更改角色数据范围
-  rpc DataScope (DataScopeRequest) returns (DataScopeReply) {
-      option (google.api.http) = {
-          put: "/system/role/dataScope"
-          body: "*"
-      };
+  rpc DataScope(DataScopeRequest) returns (DataScopeReply) {
+    option (google.api.http) = {
+      put : "/system/role/dataScope"
+      body : "*"
+    };
   };
 
   // 删除角色
-  rpc DeleteRoles (DeleteRolesRequest) returns (DeleteRolesReply){
+  rpc DeleteRoles(DeleteRolesRequest) returns (DeleteRolesReply) {
     option (google.api.http) = {
-      delete: "/system/role/{id}"
+      delete : "/system/role/{id}"
     };
   };
   // 获取角色
-  rpc GetRoles (GetRolesRequest) returns (GetRolesReply){
+  rpc GetRoles(GetRolesRequest) returns (GetRolesReply) {
     option (google.api.http) = {
-      get: "/system/role/{id}"
+      get : "/system/role/{id}"
     };
   };
 }
@@ -88,17 +89,11 @@ message UpdateRolesRequest {
 }
 message UpdateRolesReply {}
 
-message DeleteRolesRequest {
-  string id = 1;
-}
+message DeleteRolesRequest { string id = 1; }
 message DeleteRolesReply {}
 
-message GetRolesRequest {
-  int64 id = 1;
-}
-message GetRolesReply {
-    RoleData role = 1;
-}
+message GetRolesRequest { int64 id = 1; }
+message GetRolesReply { RoleData role = 1; }
 
 message ListRolesRequest {
   int32 pageNum = 1;
@@ -114,14 +109,14 @@ message ListRolesReply {
   repeated RoleData data = 4;
 }
 
-message ChangeRoleStatusRequest{
+message ChangeRoleStatusRequest {
   int64 roleId = 1;
   int32 status = 2;
 };
-message ChangeRoleStatusReply{};
+message ChangeRoleStatusReply {};
 
-message DataScopeRequest{
+message DataScopeRequest {
   int64 roleId = 1;
   int32 dataScope = 2;
 };
-message DataScopeReply{};
+message DataScopeReply {};

@@ -10,53 +10,52 @@ option go_package = "fengyin/api/admin/v1;v1";
 // 部门管理
 service Dept {
   // 部门列表
-  rpc ListDept (ListDeptRequest) returns (ListDeptReply){
+  rpc ListDept(ListDeptRequest) returns (ListDeptReply) {
     option (google.api.http) = {
-      get: "/system/dept/list"
+      get : "/system/dept/list"
     };
   };
 
   // 获取部门关系结构
-  rpc GetDeptTree (GetDeptTreeRequest) returns (GetDeptTreeReply){
+  rpc GetDeptTree(GetDeptTreeRequest) returns (GetDeptTreeReply) {
     option (google.api.http) = {
-      get: "/system/dept/deptTree"
+      get : "/system/dept/deptTree"
     };
   };
 
   // 创建部门
-  rpc CreateDept (CreateDeptRequest) returns (CreateDeptReply){
+  rpc CreateDept(CreateDeptRequest) returns (CreateDeptReply) {
     option (google.api.http) = {
-      post: "/system/dept"
-      body:"*"
+      post : "/system/dept"
+      body : "*"
     };
   };
 
   // 更新部门
-  rpc UpdateDept (UpdateDeptRequest) returns (UpdateDeptReply){
+  rpc UpdateDept(UpdateDeptRequest) returns (UpdateDeptReply) {
     option (google.api.http) = {
-      put: "/system/dept"
-      body:"*"
+      put : "/system/dept"
+      body : "*"
     };
   };
 
   // 删除部门
-  rpc DeleteDept (DeleteDeptRequest) returns (DeleteDeptReply){
+  rpc DeleteDept(DeleteDeptRequest) returns (DeleteDeptReply) {
     option (google.api.http) = {
-      delete: "/system/dept/{id}"
+      delete : "/system/dept/{id}"
     };
   };
 
   // 获取角色部门树
-  rpc RoleDeptTreeSelect (RoleDeptTreeSelectRequest) returns (RoleDeptTreeSelectReply){
+  rpc RoleDeptTreeSelect(RoleDeptTreeSelectRequest)
+      returns (RoleDeptTreeSelectReply) {
     option (google.api.http) = {
-      get: "/system/dept/roleDeptTreeSelect/{roleId}"
+      get : "/system/dept/roleDeptTreeSelect/{roleId}"
     };
   };
 };
 
-message RoleDeptTreeSelectRequest {
-  int32 roleId = 1;
-}
+message RoleDeptTreeSelectRequest { int32 roleId = 1; }
 message RoleDeptTreeSelectReply {
   repeated int32 checkedKeys = 1;
   repeated DeptLabel depts = 2;
@@ -68,25 +67,21 @@ message DeptLabel {
   string deptName = 3;
 }
 
-message ListDeptRequest{
-    string deptName = 1;
-    int32 status = 2;
-    int64 deptId = 3;
-};
-message ListDeptReply{
-  repeated DeptTree data = 1;
-};
-
-message GetDeptTreeRequest{
+message ListDeptRequest {
   string deptName = 1;
   int32 status = 2;
   int64 deptId = 3;
 };
-message GetDeptTreeReply{
-  repeated DeptTree data = 3;
-};
+message ListDeptReply { repeated DeptTree data = 1; };
 
-message CreateDeptRequest{
+message GetDeptTreeRequest {
+  string deptName = 1;
+  int32 status = 2;
+  int64 deptId = 3;
+};
+message GetDeptTreeReply { repeated DeptTree data = 3; };
+
+message CreateDeptRequest {
   int64 parentId = 1;
   string deptName = 2;
   string leader = 3;
@@ -95,9 +90,9 @@ message CreateDeptRequest{
   int32 status = 6;
   int32 sort = 7;
 };
-message CreateDeptReply{};
+message CreateDeptReply {};
 
-message UpdateDeptRequest{
+message UpdateDeptRequest {
   int64 deptId = 1;
   int64 parentId = 2;
   string deptName = 3;
@@ -107,9 +102,7 @@ message UpdateDeptRequest{
   int64 status = 7;
   int32 sort = 8;
 };
-message UpdateDeptReply{};
+message UpdateDeptReply {};
 
-message DeleteDeptRequest{
-  int64 id = 1;
-};
-message DeleteDeptReply{};
+message DeleteDeptRequest { int64 id = 1; };
+message DeleteDeptReply {};
