@@ -13,11 +13,10 @@ message Bootstrap {
   Oss oss = 5;
 }
 
-enum Env
-{
-  dev = 0; // 开发环境
+enum Env {
+  dev = 0;  // 开发环境
   test = 1; // 测试环境
-  pro = 2; // 正式环境
+  pro = 2;  // 正式环境
 }
 
 message Server {
@@ -33,7 +32,7 @@ message Server {
   }
   HTTP http = 1;
   GRPC grpc = 2;
-  Env  env = 3;
+  Env env = 3;
 }
 
 message Data {
@@ -60,12 +59,10 @@ message Data {
 
 message Auth {
   string jwtKey = 1;
-  google.protobuf.Duration  expires = 2;
+  google.protobuf.Duration expires = 2;
 }
 
-message Casbin {
-  string path = 1;
-}
+message Casbin { string path = 1; }
 
 enum OssUseMode {
   aliyun = 0;
@@ -81,9 +78,7 @@ message OssConfig {
   string imgDomain = 6;
 }
 
-message OssLocalConfig {
-  string dir = 1;
-}
+message OssLocalConfig { string dir = 1; }
 
 message Oss {
   OssUseMode use = 1;
@@ -92,8 +87,8 @@ message Oss {
 }
 
 enum GormLogLevel {
-    warn = 0;
-    info = 1;
+  warn = 0;
+  info = 1;
   silent = 2;
-    error =3;
+  error = 3;
 }
